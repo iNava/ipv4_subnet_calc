@@ -1,0 +1,21 @@
+{
+    "IP Address": "192.168.25.49",
+    "Network Address": "192.168.25.48",
+    "Broadcast Address": "192.168.25.63",
+    "Total Number of Hosts": 16,
+    "Number of Usable Hosts": 14,
+    "Usable Host IP Rang": "192.168.25.49 - 192.168.25.62",
+    "Subnet Mask": "255.255.255.240",
+    "Wildcard Mask": "0.0.0.15",
+    "Binary Subnet Mask": "11111111.11111111.11111111.11110000",
+    "IP Class": "C",
+    "CIDR Notation": "/28",
+    "IP Type": "Private",
+    "Short": "192.168.25.49 /28",
+    "Binary ID": "11000000101010000001100100110001",
+    "Integer ID": 3232241969,
+    "Hex ID": "0xC0A81931",
+    "in-addr.arpa": "49.25.168.192.in-addr.arpa",
+    "IPv4 Mapped Address": ":FFFF:C0A8.1931",
+    "6to4 Prefix": "2002:C0A8.1931::/48"
+}
