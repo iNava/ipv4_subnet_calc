@@ -84,32 +84,7 @@ class IPv4Calc:
         ip_mask_binary = self.ip_and_subnet_in_binary()
         hexadecimal_values = self.ip_in_hexd()
         ipv6 = self.ipv4_to_ipv6()
-        '''result = f"""
-                    IPv4 Subnet Calculator
-                    Result
-
-                    IP Address:                 {self.ip_address}
-                    Network Address:            {net_broad_total_hosts[0]}	
-                    Broadcast Address:	        {net_broad_total_hosts[1]}	
-                    Total Number of Hosts:	    {net_broad_total_hosts[2]}
-                    Number of Usable Hosts:	    {net_broad_total_hosts[2] - 2}
-                    Usable Host IP Range:       {host_range[0]} - {host_range[-1]}
-                    Subnet Mask:                {subnets[self.subnet]}
-                    Wildcard Mask:	            {self.wildcard_ip()}
-                    Binary Subnet Mask:	        {ip_mask_binary[1]}
-                    IP Class:	                {self.ip_class()}
-                    CIDR Notation:	            {self.subnet}
-                    IP Type:	                {self.private_ip()}
-
-                    Short:	                    {self.ip_address} {self.subnet}
-                    Binary ID:	                {ip_mask_binary[0].replace('.', '')}
-                    Integer ID:	                {int(IPv4Address(self.ip_address))}
-                    Hex ID:	                    0x{hexadecimal_values.replace('.', '')}
-                    in-addr.arpa:	            {IPv4Address(self.ip_address).reverse_pointer}
-                    IPv4 Mapped Address:	    {ipv6[0]}
-                    6to4 Prefix:	            {ipv6[1]}
-                 """
-'''
+        
         result = {
             'IP Address': self.ip_address,
             'Network Address': f'{net_broad_total_hosts[0]}',
