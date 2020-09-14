@@ -1,6 +1,6 @@
 import json
-from ipaddress import IPv4Address, IPv4Interface, IPv4Network
-from pprint import pprint
+
+from ipaddress import IPv4Address, IPv4Interface
 from ext_ipv4 import MyIPv4
 from data import subnets
 
@@ -63,7 +63,7 @@ class IPv4Calc:
         if IPv4Address('240.0.0.0') <= host_ip <= IPv4Address('255.255.255.255'):
             return 'E'
 
-    #  IP belongs to Public ot Private address
+    #  IP belongs to Public or Private address
     def private_ip(self):
         host_ip = self.ip_interface
         if host_ip.is_private:
@@ -78,7 +78,8 @@ class IPv4Calc:
         ip_6to4_prefix = f'2002:{ip_in_hex[:4]}.{ip_in_hex[4:]}::/48'
         return ipv4_mapped_address, ip_6to4_prefix
 
-    def result_output(self):
+    # Generates json file(data.json) with calculated results
+    def generate_json(self):
         net_broad_total_hosts = self.net_broad_addr_and_totalhosts()
         host_range = self.usable_host_ip_range()
         ip_mask_binary = self.ip_and_subnet_in_binary()
@@ -91,7 +92,7 @@ class IPv4Calc:
             'Broadcast Address': f'{net_broad_total_hosts[1]}',
             'Total Number of Hosts': net_broad_total_hosts[2],
             'Number of Usable Hosts': net_broad_total_hosts[2] - 2,
-            'Usable Host IP Rang': f'{host_range[0]} - {host_range[-1]}',
+            'Usable Host IP Range': f'{host_range[0]} - {host_range[-1]}',
             'Subnet Mask': subnets[self.subnet],
             'Wildcard Mask': f'{self.wildcard_ip()}',
             'Binary Subnet Mask': ip_mask_binary[1],
@@ -110,16 +111,24 @@ class IPv4Calc:
         with open('data.json', 'w') as f:
             json.dump(result, f, indent=4)
 
-        return result
+    # Print to STDOUT
+    def stdout_result(self):
+        self.generate_json()
+
+        with open('data.json', 'r') as jfile:
+            data = json.load(jfile)
+            for key, value in data.items():
+                space_length = (28 - len(key)) * ' '  # counts required space to pretify stdout
+                print(key + space_length + str(value))
 
 
 def main():
-    print('IPv4 Subnet Calculator')
-    user_ip = input('Please input IPv4 network address (e.g. 192.233.164.138)\n')
-    user_sn = input('Please input subnet using prefix (e.g. /24\n')
-    print('\n-------------------------------------------------------')
+    print('\nIPv4 Subnet Calculator')
+    user_ip = input('\nPlease input IPv4 network address (e.g. 192.233.164.138):\n')
+    user_sn = input('\nPlease input subnet using prefix (e.g. /24):\n')
+    print('\n----------------------------------------------------------------')
     result = IPv4Calc(user_ip, user_sn)
-    pprint(result.result_output(), indent=4)
+    result.stdout_result()
 
 
 if __name__ == '__main__':
