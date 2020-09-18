@@ -1,8 +1,10 @@
 import json
+import sys
 
 from ipaddress import IPv4Address, IPv4Interface
 from ext_ipv4 import MyIPv4
 from data import subnets
+from calc_subnets import calc_possible_subnets
 
 
 class IPv4Calc:
@@ -108,14 +110,14 @@ class IPv4Calc:
             '6to4 Prefix': ipv6[1],
         }
 
-        with open('data.json', 'w') as f:
+        with open('./results/data.json', 'w') as f:
             json.dump(result, f, indent=4)
 
     # Print to STDOUT
     def stdout_result(self):
         self.generate_json()
 
-        with open('data.json', 'r') as jfile:
+        with open('./results/data.json', 'r') as jfile:
             data = json.load(jfile)
             for key, value in data.items():
                 space_length = (28 - len(key)) * ' '  # counts required space to pretify stdout
@@ -129,6 +131,7 @@ def main():
     print('\n----------------------------------------------------------------')
     result = IPv4Calc(user_ip, user_sn)
     result.stdout_result()
+    calc_possible_subnets(user_ip, user_sn)
 
 
 if __name__ == '__main__':

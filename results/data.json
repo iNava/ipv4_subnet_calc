@@ -1,0 +1,21 @@
+{
+    "IP Address": "205.201.200.199",
+    "Network Address": "205.201.200.192",
+    "Broadcast Address": "205.201.200.255",
+    "Total Number of Hosts": 64,
+    "Number of Usable Hosts": 62,
+    "Usable Host IP Range": "205.201.200.193 - 205.201.200.254",
+    "Subnet Mask": "255.255.255.192",
+    "Wildcard Mask": "0.0.0.63",
+    "Binary Subnet Mask": "11111111.11111111.11111111.11000000",
+    "IP Class": "C",
+    "CIDR Notation": "/26",
+    "IP Type": "Public",
+    "Short": "205.201.200.199 /26",
+    "Binary ID": "11001101110010011100100011000111",
+    "Integer ID": 3452553415,
+    "Hex ID": "0xCDC9C8C7",
+    "in-addr.arpa": "199.200.201.205.in-addr.arpa",
+    "IPv4 Mapped Address": ":FFFF:CDC9.C8C7",
+    "6to4 Prefix": "2002:CDC9.C8C7::/48"
+}
