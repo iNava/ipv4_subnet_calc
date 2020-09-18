@@ -68,7 +68,7 @@ Network Address:            192.168.25.48
 Broadcast Address:          192.168.25.63
 Total Number of Hosts:      16
 Number of Usable Hosts:     14
-Usable Host IP Rang:        192.168.25.49 - 192.168.25.62"
+Usable Host IP Range:        192.168.25.49 - 192.168.25.62"
 Subnet Mask:                255.255.255.240
 Wildcard Mask:              0.0.0.15
 Binary Subnet Mask:         11111111.11111111.11111111.11110000

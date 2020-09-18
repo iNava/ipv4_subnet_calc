@@ -131,7 +131,11 @@ def main():
     print('\n----------------------------------------------------------------')
     result = IPv4Calc(user_ip, user_sn)
     result.stdout_result()
+
     calc_possible_subnets(user_ip, user_sn)
+    with open('./results/possible_networks.txt', 'r') as txtfile:
+        for line in txtfile:
+            print(line.strip())
 
 
 if __name__ == '__main__':
