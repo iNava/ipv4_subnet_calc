@@ -35,17 +35,6 @@ class IPv4Calc:
         total_number_hosts = net_address.num_addresses
         return net_address.network_address, broad_address, total_number_hosts
 
-    # Return a list of usable hosts in a network
-    def usable_host_ip_range(self):
-        hosts_ip_generator = self.ip_interface.network.hosts()  # .hosts() - Generates Iterator over usable hosts in a network
-        usable_hosts = []
-        while hosts_ip_generator:
-            try:
-                usable_hosts.append(next(hosts_ip_generator))
-            except StopIteration:
-                break
-        return usable_hosts
-
     #  Return wildcard mask
     def wildcard_ip(self):
         wildcard = self.ip_interface
@@ -83,7 +72,6 @@ class IPv4Calc:
     # Generates json file(data.json) with calculated results
     def generate_json(self):
         net_broad_total_hosts = self.net_broad_addr_and_totalhosts()
-        host_range = self.usable_host_ip_range()
         ip_mask_binary = self.ip_and_subnet_in_binary()
         hexadecimal_values = self.ip_in_hexd()
         ipv6 = self.ipv4_to_ipv6()
@@ -94,7 +82,7 @@ class IPv4Calc:
             'Broadcast Address': f'{net_broad_total_hosts[1]}',
             'Total Number of Hosts': net_broad_total_hosts[2],
             'Number of Usable Hosts': net_broad_total_hosts[2] - 2,
-            'Usable Host IP Range': f'{host_range[0]} - {host_range[-1]}',
+            'Usable Host IP Range': f'{net_broad_total_hosts[0] + 1} - {net_broad_total_hosts[1] - 1}',
             'Subnet Mask': subnets[self.subnet],
             'Wildcard Mask': f'{self.wildcard_ip()}',
             'Binary Subnet Mask': ip_mask_binary[1],
